@@ -7,7 +7,7 @@ namespace CabinCrew.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CabinCrewController : Controller
+    public class CabinCrewController : ControllerBase
     {
         private readonly IMediator _mediator;
 
