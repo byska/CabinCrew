@@ -20,7 +20,7 @@ namespace CabinCrew.Infrastructure.Seed
             var attendant1 = new CabinAttendant(
                 Guid.NewGuid(),
                 new AttendantInfo(
-                    name: "Ayşe Yılmaz",
+                    name: "Beste Yasak",
                     age: 30,
                     gender: "Kadın",
                     nationality: "Türk",
@@ -33,9 +33,9 @@ namespace CabinCrew.Infrastructure.Seed
             var attendant2 = new CabinAttendant(
                 Guid.NewGuid(),
                 new AttendantInfo(
-                    name: "John Doe",
+                    name: "Aysu Sever",
                     age: 25,
-                    gender: "Erkek",
+                    gender: "Kadın",
                     nationality: "Amerikan",
                     languages: new List<string> { "İngilizce", "İspanyolca" }
                 ),
@@ -46,7 +46,7 @@ namespace CabinCrew.Infrastructure.Seed
             var attendant3 = new CabinAttendant(
                 Guid.NewGuid(),
                 new AttendantInfo(
-                    name: "Mehmet Kaya",
+                    name: "Ercan Tanrıkulu",
                     age: 35,
                     gender: "Erkek",
                     nationality: "Türk",
