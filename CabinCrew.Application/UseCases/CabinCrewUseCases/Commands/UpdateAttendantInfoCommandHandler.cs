@@ -27,10 +27,12 @@ namespace CabinCrew.Application.UseCases.CabinCrewUseCases.Commands
     public class UpdateAttendantInfoCommandResponse
     {
         public bool IsUpdated { get; set; }
+        public string? Message { get; set; }
 
-        public UpdateAttendantInfoCommandResponse(bool ısUpdated)
+        public UpdateAttendantInfoCommandResponse(bool ısUpdated, string? message)
         {
             IsUpdated = ısUpdated;
+            Message = message;
         }
     }
 
@@ -66,12 +68,12 @@ namespace CabinCrew.Application.UseCases.CabinCrewUseCases.Commands
 
                 await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-                return new UpdateAttendantInfoCommandResponse(true);
+                return new UpdateAttendantInfoCommandResponse(true,null);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                return new UpdateAttendantInfoCommandResponse(false);
+                return new UpdateAttendantInfoCommandResponse(false, ex.Message);
             }
 
         }

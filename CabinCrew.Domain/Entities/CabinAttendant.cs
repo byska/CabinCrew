@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace CabinCrew.Domain.Entities
 {
-    public class CabinAttendant
+    public class CabinAttendant : EntityBase
     {
         public AttendantInfo Info { get; private set; }
-        public Guid Id { get; private set; }
         public AttendantType AttendantType { get; private set; }
         public IReadOnlyCollection<string> VehicleRestrictions => _vehicleRestrictions.AsReadOnly();
         public IReadOnlyCollection<string> Recipes => _recipes.AsReadOnly();

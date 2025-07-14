@@ -23,10 +23,12 @@ namespace CabinCrew.Application.UseCases.CabinCrewUseCases.Commands
     public class AddRecipeCommandResponse
     {
         public bool IsAdded { get; set; }
+        public string? Message { get; set; }
 
-        public AddRecipeCommandResponse(bool ısAdded)
+        public AddRecipeCommandResponse(bool ısAdded, string? message)
         {
             IsAdded = ısAdded;
+            Message = message;
         }
     }
     public class AddRecipeCommandHandler : IRequestHandler<AddRecipeCommand, AddRecipeCommandResponse>
@@ -53,11 +55,11 @@ namespace CabinCrew.Application.UseCases.CabinCrewUseCases.Commands
 
                 await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-                return new AddRecipeCommandResponse(true);
+                return new AddRecipeCommandResponse(true, null);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return new AddRecipeCommandResponse(false);
+                return new AddRecipeCommandResponse(false, ex.Message);
 
             }
             

@@ -4,6 +4,7 @@ using CabinCrew.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CabinCrew.Infrastructure.Migrations
 {
     [DbContext(typeof(CabinCrewDbContext))]
-    partial class CabinCrewDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250714100255_AddedBaseEntity")]
+    partial class AddedBaseEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

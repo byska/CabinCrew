@@ -21,10 +21,12 @@ namespace CabinCrew.Application.UseCases.CabinCrewUseCases.Commands
     public class DeleteCabinAttendantCommandResponse
     {
         public bool IsDeleted { get; set; }
+        public string? Message { get; set; }
 
-        public DeleteCabinAttendantCommandResponse(bool ısDeleted)
+        public DeleteCabinAttendantCommandResponse(bool ısDeleted, string? message)
         {
             IsDeleted = ısDeleted;
+            Message = message;
         }
     }
 
@@ -51,14 +53,14 @@ namespace CabinCrew.Application.UseCases.CabinCrewUseCases.Commands
                 _crewRepository.Delete(attendant);
                 await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-                return new DeleteCabinAttendantCommandResponse(true);
+                return new DeleteCabinAttendantCommandResponse(true, null);
             }
             catch (Exception ex)
             {
-                throw new Exception("Cabin attendant can not deleted!");
+                return new DeleteCabinAttendantCommandResponse(false, ex.Message);
 
             }
-           
+
         }
     }
 

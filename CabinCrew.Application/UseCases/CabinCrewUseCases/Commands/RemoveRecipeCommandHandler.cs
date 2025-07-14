@@ -23,10 +23,12 @@ namespace CabinCrew.Application.UseCases.CabinCrewUseCases.Commands
     public class RemoveRecipeCommandResponse
     {
         public bool IsDeleted { get; set; }
+        public string? Message { get; set; }
 
-        public RemoveRecipeCommandResponse(bool ısDeleted)
+        public RemoveRecipeCommandResponse(bool ısDeleted, string? message)
         {
             IsDeleted = ısDeleted;
+            Message = message;
         }
     }
 
@@ -54,11 +56,11 @@ namespace CabinCrew.Application.UseCases.CabinCrewUseCases.Commands
 
                 await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-                return new RemoveRecipeCommandResponse(true);
+                return new RemoveRecipeCommandResponse(true, null);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return new RemoveRecipeCommandResponse(false);
+                return new RemoveRecipeCommandResponse(false, ex.Message);
                 throw;
             }
            
